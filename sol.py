@@ -117,6 +117,9 @@ intercept = solara.reactive(40.0)
 
 model = solara.reactive("")
 
+show_message = solara.reactive(False)
+solution_message = solara.reactive("Show Answer")
+
 
 @solara.component
 def Page():
@@ -216,31 +219,35 @@ def Page():
                     #       on_value=set_region, values=REGIONS)
                     # solara.Markdown(f"current region is {region}")
 
-                    open, set_open = solara.use_state(0)
-                    target, set_target = solara.use_state(0)
+                    solara.Switch(label=solution_message.value,
+                                  value=show_message)
 
-                    open = "closed"
+                    if show_message.value:
+                        solara.Markdown(f"""
+                            Estimated US life expectancy in 2030: \
+                                        ${round(linear_function(130, slope.value, intercept.value),2)}$ years 
+                            """)
 
-                    with rv.ExpansionPanels(v_model=target, on_v_model=set_target, mandatory=False, value=open):
-                        with rv.ExpansionPanel():
-                            rv.ExpansionPanelHeader(
-                                children=["Jupyter notebook"])
-                            with rv.ExpansionPanelContent():
-                                solara.Markdown(
-                                    "Build on top of ipywidgets, solara components work in all Jupyter notebook environments.")
+                    # with rv.ExpansionPanels(v_model=target, on_v_model=set_target, mandatory=False, value=open):
+                    #     with rv.ExpansionPanel():
+                    #         rv.ExpansionPanelHeader(
+                    #             children=["Jupyter notebook"])
+                    #         with rv.ExpansionPanelContent():
+                    #             solara.Markdown(
+                    #                 "Build on top of ipywidgets, solara components work in all Jupyter notebook environments.")
 
-                    with solara.Row():
-                        solara.Button(label="(1)", outlined=True)
-                        solara.Markdown("The choice $x_1$")
-                    with solara.Row():
-                        solara.Button(label="(2)", outlined=True)
-                        solara.Markdown("The choice $x_1$")
-                    with solara.Row():
-                        solara.Button(label="(3)", outlined=True)
-                        solara.Markdown("The choice $x_1$")
-                    with solara.Row():
-                        solara.Button(label="(4)", outlined=True)
-                        solara.Markdown("The choice $x_1$")
+                    # with solara.Row():
+                    #     solara.Button(label="(1)", outlined=True)
+                    #     solara.Markdown("The choice $x_1$")
+                    # with solara.Row():
+                    #     solara.Button(label="(2)", outlined=True)
+                    #     solara.Markdown("The choice $x_1$")
+                    # with solara.Row():
+                    #     solara.Button(label="(3)", outlined=True)
+                    #     solara.Markdown("The choice $x_1$")
+                    # with solara.Row():
+                    #     solara.Button(label="(4)", outlined=True)
+                    #     solara.Markdown("The choice $x_1$")
 #         with st.expander("Estimated US life expectancy in 2030:"):
 #             st.write(
 #                 str(round(linear_function(130, user_slope, user_intercept), 2)) + " years")
