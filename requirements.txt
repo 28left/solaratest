@@ -1,0 +1,4 @@
+pandas
+matplotlib
+numpy
+solara==1.19.0
