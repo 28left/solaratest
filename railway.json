@@ -4,6 +4,6 @@
         "builder": "NIXPACKS"
     },
     "deploy": {
-        "startCommand": "solara run linear_streamlit.py --server.port $PORT"
+        "startCommand": "solara run sol.py --port=$PORT"
     }
 }
