@@ -188,7 +188,7 @@ def Page():
                         """)
 
                     solara.Markdown(
-                        f"Your model: $${slope} \cdot x + {intercept}$$")
+                        f"Your model: $$y = {slope} \cdot x + {intercept}$$")
 
                     solara.Markdown("""
                         Mathematically, the model is simply a linear function defined by slope and intercept. But since it is 
@@ -198,7 +198,7 @@ def Page():
 
                 with solara.lab.Tab("Applying the model"):
                     solara.Markdown(f"We want to use our model \
-                        $${slope} \cdot x + {intercept}$$ \
+                        $$y = {slope} \cdot x + {intercept}$$ \
                         to make predictions about the future average life expectancy of the US population.")
 
                     solara.Markdown("""
@@ -214,7 +214,7 @@ def Page():
                     # solara.Select(label="Food", value="abab",
                     #               values=["abab", "cdcd"], disabled=True)
 
-                    # region, set_region = solara.use_state("Asia")
+                    # set region, set_region = solara.use_state("Asia")
                     # Radio(label="Select A Region", value=region,
                     #       on_value=set_region, values=REGIONS)
                     # solara.Markdown(f"current region is {region}")
